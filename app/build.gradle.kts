@@ -1,16 +1,17 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.beancurdv.frida.sample"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.beancurdv.frida.sample"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -18,6 +19,10 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {

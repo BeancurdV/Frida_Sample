@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.databinding.DataBindingUtil
+import com.beancurdv.frida.sample.databinding.ActivityMainBinding
 
 class MainActivity : ComponentActivity() {
+    private lateinit var mBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.btn_go).setOnClickListener {
-            Toast.makeText(this, "hello", 0).show()
+        mBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        mBinding.btnUrl.setOnClickListener {
+            Toast.makeText(this, Constants.URL, Toast.LENGTH_SHORT).show()
+        }
+
+        mBinding.btnAppVersion.setOnClickListener {
+            Toast.makeText(this, Constants.getAppVersion(), Toast.LENGTH_SHORT).show()
         }
     }
 }
